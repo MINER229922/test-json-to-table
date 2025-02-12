@@ -1,0 +1,4 @@
+Motherboard
+(?<brand>.*)(?<chip>[A-Z]\d{3}[\-A-Za-z]*).*(\((?<info>.*)\)).*(\sx(?<qty>\d))
+CPU (wip)
+/(?<brand>(?i:intel|amd)\s(?<label>.*)).*\s處理器\s(?<thread>.*?)\s(\(.*?\)){1,}/gm
