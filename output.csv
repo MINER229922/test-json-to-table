@@ -1,0 +1,4 @@
+child_name,child_age,name,location,age
+Mike,5,John,"{'city': 'New York', 'state': 'NY'}",30
+Anna,3,John,"{'city': 'New York', 'state': 'NY'}",30
+Chris,2,Jane,"{'city': 'Los Angeles', 'state': 'CA'}",25

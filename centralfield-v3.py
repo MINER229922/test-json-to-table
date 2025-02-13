@@ -73,17 +73,32 @@ class MachineSetup:
         qty, str_data = self.extract_qty(str_data)
         dict_part_data["qty"] = qty
 
-        if part_name == "cpu":
+        if part_name == KEY_CAT_CPU:
             str_data = str_data.replace("(", "_").replace(")", "_")
             list_cpu_info = str_data.split("_")
             dict_part_data["extras"] = [info for info in list_cpu_info[1:] if info]
-            result = re.match(
+            matching = re.match(
                 r"(?P<brand>(?i:intel|amd)\s(?P<name>.*)).*\s處理器\s(?P<thread>.*?)\s",
                 list_cpu_info[0],
             )
-            dict_part_data["brand"] = result.group("brand")
-            dict_part_data["fname"] = result.group("name")
-            dict_part_data["lname"] = result.group("thread")
+            dict_part_data["brand"] = matching.group("brand")
+            dict_part_data["fname"] = matching.group("name")
+            dict_part_data["lname"] = matching.group("thread")
+        elif part_name == KEY_CAT_GPU:
+            pattern = r"(?P<manufacturer>\b.*)\sGeForce\s(?P<gpu>RTX\s4070(?:Ti| Ti)?(?:\sSUPER)?)"
+            matching = re.match(pattern, str_data, flags=re.IGNORECASE)
+            dict_part_data["brand"] = matching.group("manufacturer")
+            dict_part_data["fname"] = matching.group("gpu")
+
+        elif part_name == KEY_CAT_MB:
+            pattern = (
+                r"\b(?P<full_name>(?P<brand>.*)\b(?P<chip>[A-Z]\d{3}[\-A-Za-z]*)\b.*)\b.*\s主機板\s\((?P<info>.*)\)"
+            )
+            matching = re.match(pattern, str_data, flags=re.IGNORECASE)
+            dict_part_data["brand"] = matching.group("brand")
+            dict_part_data["fname"] = matching.group("chip")
+            dict_part_data["lname"] = matching.group("full_name")
+            dict_part_data["extras"] = [matching.group("info")]
 
         dict_part_data = {
             key: value for key, value in dict_part_data.items() if value != "NA"

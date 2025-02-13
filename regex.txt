@@ -2,3 +2,25 @@ Motherboard
 (?<brand>.*)(?<chip>[A-Z]\d{3}[\-A-Za-z]*).*(\((?<info>.*)\)).*(\sx(?<qty>\d))
 CPU (wip)
 /(?<brand>(?i:intel|amd)\s(?<label>.*)).*\s處理器\s(?<thread>.*?)\s(\(.*?\)){1,}/gm
+
+could we convert json like this:
+```
+{
+    "a": {
+        "a": 1,
+        "b": 1
+    },
+    "b": {
+        "a": 1,
+        "b": 1,
+        "c": 1
+    },
+    "c": [
+        1,
+        1,
+        1
+    ]
+}
+```
+with these headers on the first row:
+"a.a", "a.b", "b.a", "b.b", "b.c", "c.0", "c.1", "c.2"

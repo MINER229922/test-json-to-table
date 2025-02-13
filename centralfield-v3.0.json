@@ -20,6 +20,12 @@
             "raw": "Intel Core i5-13400F 處理器 10核16線程 (Tray/LGA 1700) x1"
         },
         "motherboard": {
+            "brand": "Asus 華碩 ",
+            "fname": "B760M-AYW",
+            "lname": "Asus 華碩 B760M-AYW WiFi Micro-ATX",
+            "extras": [
+                "DDR5/Wi-Fi/藍牙"
+            ],
             "qty": 1,
             "raw": "Asus 華碩 B760M-AYW WiFi Micro-ATX 主機板 (DDR5/Wi-Fi/藍牙) x1"
         },
@@ -28,6 +34,8 @@
             "raw": "ADATA XPG Lancer RGB 32GB 黑色套裝 (2x16GB) D5-5600C36 (AX5U5600C3616G-DCLARBK)(XMP/EXPO) x1"
         },
         "gpu": {
+            "brand": "ZOTAC GAMING 索泰",
+            "fname": "RTX 4070 SUPER",
             "qty": 1,
             "raw": "ZOTAC GAMING 索泰 GeForce RTX 4070 SUPER Twin Edge OC 超頻版 12GB GDDR6X 顯示卡(ZT-D40720H-10M) x1"
         },
@@ -63,6 +71,12 @@
             "raw": "AMD Ryzen5 9600X 處理器 6核12線程 (盒裝/AM5/內顯)(100-100001405WOF) x1"
         },
         "motherboard": {
+            "brand": "Asus 華碩 PRIME ",
+            "fname": "B650M-A",
+            "lname": "Asus 華碩 PRIME B650M-A WiFi II Micro-ATX",
+            "extras": [
+                "DDR5/Wi-Fi/藍牙"
+            ],
             "qty": 1,
             "raw": "Asus 華碩 PRIME B650M-A WiFi II Micro-ATX 主機板 (DDR5/Wi-Fi/藍牙) x1"
         },
@@ -71,6 +85,8 @@
             "raw": "Acer Predator Pallas II 32GB 黑色套裝 (2x16GB) D5-6000C30 (RM-AP5D32B)(XMP/EXPO) x1"
         },
         "gpu": {
+            "brand": "ASUS 華碩 Dual",
+            "fname": "RTX 4070",
             "qty": 1,
             "raw": "ASUS 華碩 Dual GeForce RTX 4070 EVO OC Edition 12GB GDDR6X 顯示卡 x1"
         },
