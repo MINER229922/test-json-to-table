@@ -2,6 +2,7 @@ import csv
 import json
 import re
 
+DEBUGGING = True
 KEY_CAT_CPU = "cpu"
 KEY_CAT_MB = "motherboard"
 KEY_CAT_RAM = "ram"
@@ -12,10 +13,11 @@ KEY_CAT_CASE = "case"
 KEY_CAT_HEAT = "heat"
 KEY_CAT_MS = "microsoft"
 
+
 class MachineSetup:
-    
+
     def __init__(self, json_data):
-        self.raw_data = json_data
+        # self.raw_data = json_data
         attributes_map = {
             "url": "url",
             "title": "pc_title",
@@ -30,9 +32,9 @@ class MachineSetup:
             KEY_CAT_GPU: r"【(.*顯示卡.*?)】",
             KEY_CAT_SSD: r"【(.*(?i:SSD).*?)】",
             KEY_CAT_POWER: r"【.*火牛.*】",
-            KEY_CAT_CASE: r"【.*機箱.*】",
-            KEY_CAT_HEAT: r"【(.*散熱.*?)】",
-            KEY_CAT_MS: r"【(.*(?i:microsoft).*?)】",
+            # KEY_CAT_CASE: r"【.*機箱.*】",
+            # KEY_CAT_HEAT: r"【(.*散熱.*?)】",
+            # KEY_CAT_MS: r"【(.*(?i:microsoft).*?)】",
         }
 
         for attribute_name, json_key in attributes_map.items():
@@ -43,20 +45,68 @@ class MachineSetup:
         self.unknown_parts = []
         if isinstance(self.list_raw_parts, list):
             for raw_part in self.list_raw_parts:
+                found = False
                 for part_name, pattern in dict_part_category.items():
                     str_rmv_header = re.sub(pattern, "", raw_part, flags=re.IGNORECASE)
                     if str_rmv_header == raw_part:
                         # print("no match")
-                        self.unknown_parts.append(raw_part)
                         continue
                     # print("matched")
+                    found = True
                     self.handle_part_data(part_name, str_rmv_header)
+                if not found:
+                    self.unknown_parts.append(raw_part)
+            del self.list_raw_parts
+
     def handle_part_data(self, part_name, part_data_full):
-        part_data_full = part_data_full.strip()
-        qty = int(re.match(r".*x(\d+)$", part_data_full).group(1))
-        print(part_data_full, qty-1)
-        setattr(self, part_name, {})
-        pass
+        str_data = part_data_full.strip()
+        dict_part_data = {
+            "brand": "NA",
+            "fname": "NA",
+            "lname": "NA",
+            "extras": "NA",
+            "qty": -1,
+        }
+        if DEBUGGING:
+            dict_part_data["raw"] = str_data
+
+        qty, str_data = self.extract_qty(str_data)
+        dict_part_data["qty"] = qty
+
+        if part_name == "cpu":
+            str_data = str_data.replace("(", "_").replace(")", "_")
+            list_cpu_info = str_data.split("_")
+            dict_part_data["extras"] = [info for info in list_cpu_info[1:] if info]
+            result = re.match(
+                r"(?P<brand>(?i:intel|amd)\s(?P<name>.*)).*\s處理器\s(?P<thread>.*?)\s",
+                list_cpu_info[0],
+            )
+            dict_part_data["brand"] = result.group("brand")
+            dict_part_data["fname"] = result.group("name")
+            dict_part_data["lname"] = result.group("thread")
+
+        dict_part_data = {
+            key: value for key, value in dict_part_data.items() if value != "NA"
+        }
+        setattr(self, part_name, dict_part_data)
+
+    def extract_qty(self, str_data):
+        pattern = r"\sx\d+$"
+        match_qty = re.search(pattern, str_data)
+        qty = -1
+        if match_qty:
+            try:
+                str_qty = match_qty.group()
+                qty = int(str_qty[-1])
+                str_data = re.sub(pattern, "", str_data)
+            except IndexError as e:
+                print(f"group(...) Error: {e}")
+            except ValueError as e:
+                print(f"ParseInt Error: {e}")
+        else:
+            print("Qty No match")
+        return (qty, str_data)
+
     def to_dict(self):
         return {
             "url": self.url,
@@ -64,34 +114,6 @@ class MachineSetup:
             "title": self.title,
             "price": self.price,
         }
-
-
-
-
-class PartType:
-    def __init__(self, part_type, pattern):
-        self.type = part_type
-        self.pattern = pattern
-        self.qty = -1
-        self.brand = ""
-        self.raw_data = ""
-        self.product_name = ""
-        self.product_label = ""
-        self.extra_info = []
-
-    def to_dict(self):
-        return {
-            "brand": self.brand,
-            "product_label": self.product_label,
-            "product_name": self.product_name,
-            "extra_info": self.extra_info,
-            "raw_data": self.raw_data,
-            "qty": self.qty,
-        }
-
-    def process_raw_data(self, str_raw_data):
-
-        pass
 
 
 dir_target = "."
@@ -115,7 +137,7 @@ for idx, data in enumerate(json_data):
 
 
 def mapping(obj):
-    return obj.to_dict()
+    return obj.__dict__
 
 
 list_setup = list(map(mapping, list_setup))

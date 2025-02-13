@@ -1,0 +1,86 @@
+[
+    {
+        "url": "https://www.centralfield.com/packages/KO20240029/ANTEC-CX200M-RGB-ELITE-i5-13400F-RTX4070-SUPER-32GB-1TB-#%E6%89%93%E6%A9%9F%E9%81%8A%E6%88%B2%E7%B5%84%E5%90%88#%E5%89%AA%E7%89%87%E7%95%AB%E5%9C%96",
+        "title": "ANTEC CX200M RGB ELITE i5-13400F/RTX4070 SUPER/32GB/1TB",
+        "id": "KO20240029",
+        "price": 8950,
+        "unknown_parts": [
+            "【散熱相關產品】 PCCooler 超頻三 E126M PRO 風冷散熱器 (黑色)(AIR) x1",
+            "【機箱】 Antec 安鈦克 CX200M RGB ELITE Micro-ATX Case (黑色/Black) x1",
+            "【砌機服務】 電腦組裝及五年自攜保用檢查服務 Hardware Assembling with Five Years Limited Warranty x1"
+        ],
+        "cpu": {
+            "brand": "Intel Core i5-13400F",
+            "fname": "Core i5-13400F",
+            "lname": "10核16線程",
+            "extras": [
+                "Tray/LGA 1700"
+            ],
+            "qty": 1,
+            "raw": "Intel Core i5-13400F 處理器 10核16線程 (Tray/LGA 1700) x1"
+        },
+        "motherboard": {
+            "qty": 1,
+            "raw": "Asus 華碩 B760M-AYW WiFi Micro-ATX 主機板 (DDR5/Wi-Fi/藍牙) x1"
+        },
+        "ram": {
+            "qty": 1,
+            "raw": "ADATA XPG Lancer RGB 32GB 黑色套裝 (2x16GB) D5-5600C36 (AX5U5600C3616G-DCLARBK)(XMP/EXPO) x1"
+        },
+        "gpu": {
+            "qty": 1,
+            "raw": "ZOTAC GAMING 索泰 GeForce RTX 4070 SUPER Twin Edge OC 超頻版 12GB GDDR6X 顯示卡(ZT-D40720H-10M) x1"
+        },
+        "ssd": {
+            "qty": 1,
+            "raw": "Crucial P3 Plus 1TB Gen 4 M.2 SSD (CT1000P3PSSD8) x1"
+        },
+        "power": {
+            "qty": 1,
+            "raw": "Antec 安鈦克 750W/CSK750H 半模銅牌火牛,3年保用 80PLUS Bronze x1"
+        }
+    },
+    {
+        "url": "https://www.centralfield.com/packages/KO20240159/Centralfield-+-R5-9600X-RTX4070-32GB-1TB---Powered-by-ASUS-#Powered-by-ASUS-%E8%8F%AF%E7%A2%A9%E7%B5%84%E5%90%88#%E6%89%93%E6%A9%9F%E9%81%8A%E6%88%B2%E7%B5%84%E5%90%88#%E5%89%AA%E7%89%87%E7%95%AB%E5%9C%96",
+        "title": "Centralfield + R5-9600X/RTX4070/32GB/1TB - Powered by ASUS",
+        "id": "KO20240159",
+        "price": 10280,
+        "unknown_parts": [
+            "【散熱相關產品】 Darkflash DM12R Pro 12cm ARGB Reverse Fan (單把反向黑色)(TH-DM12RBP) x2",
+            "【散熱相關產品】 JONSBO 喬思伯 240 ARGB 水冷散熱器 (AIO)(黑色)(TG-240BK) x1",
+            "【機箱】 JONSBO 喬思伯 TK-1 Micro-ATX Case (黑色/Black) x1",
+            "【砌機服務】 電腦組裝及五年自攜保用檢查服務 Hardware Assembling with Five Years Limited Warranty x1"
+        ],
+        "cpu": {
+            "brand": "AMD Ryzen5 9600X",
+            "fname": "Ryzen5 9600X",
+            "lname": "6核12線程",
+            "extras": [
+                "盒裝/AM5/內顯",
+                "100-100001405WOF"
+            ],
+            "qty": 1,
+            "raw": "AMD Ryzen5 9600X 處理器 6核12線程 (盒裝/AM5/內顯)(100-100001405WOF) x1"
+        },
+        "motherboard": {
+            "qty": 1,
+            "raw": "Asus 華碩 PRIME B650M-A WiFi II Micro-ATX 主機板 (DDR5/Wi-Fi/藍牙) x1"
+        },
+        "ram": {
+            "qty": 1,
+            "raw": "Acer Predator Pallas II 32GB 黑色套裝 (2x16GB) D5-6000C30 (RM-AP5D32B)(XMP/EXPO) x1"
+        },
+        "gpu": {
+            "qty": 1,
+            "raw": "ASUS 華碩 Dual GeForce RTX 4070 EVO OC Edition 12GB GDDR6X 顯示卡 x1"
+        },
+        "ssd": {
+            "qty": 1,
+            "raw": "Kingston NV3 1TB Gen 4 M.2 SSD (SNV3S/1000G)(隨附 Acronis 備份軟體) x1"
+        },
+        "power": {
+            "qty": 1,
+            "raw": "ASUS 華碩 750W/TUF Gaming 750W 銅牌火牛,6年保用 80PLUS Bronze x1"
+        }
+    }
+]
